@@ -1,0 +1,13 @@
+name = "fenci"
+compatibility_date = "2024-09-25"
+main = "src/index.js"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[vars]
+GITHUB_OWNER = "Ancenchan"
+GITHUB_REPO = "fenci"
+GITHUB_BRANCH = "main"
+LYRICS_DIR = "lyrics"
