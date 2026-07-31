@@ -160,7 +160,7 @@
       <div class="status" id="status"></div>
       <div class="tips">
         示例：<code>https://projectsekai.fandom.com/wiki/RAD_DOGS</code><br>
-        需启动后端：<code>python server.py</code>
+        歌词文件会自动保存到 GitHub 仓库
       </div>
     </div>
 
@@ -235,7 +235,7 @@
         li.innerHTML = `
           <div>
             <div class="name" title="${f.song_name}">${f.song_name}</div>
-            <div class="meta">${fmtSize(f.size)} · ${fmtTime(f.mtime)}</div>
+            <div class="meta">${fmtSize(f.size)}${f.mtime ? ' · ' + fmtTime(f.mtime) : ''}</div>
           </div>
           <div class="actions">
             <a class="mini-btn" href="${apiBase}/songs/${encodeURIComponent(f.filename)}" target="_blank">打开</a>
@@ -254,7 +254,11 @@
       });
     } catch (e) {
       countEl.textContent = '?';
-      fileListEl.innerHTML = `<li class="empty" style="color:#f5a5a5;">无法连接后端：${e}<br>请先运行 <code>python server.py</code></li>`;
+      fileListEl.innerHTML = `<li class="empty" style="color:#f5a5a5; line-height:1.8;">
+        ⚠️ 无法连接后端<br><br>
+        <span style="color:#7d81a6;font-size:12px;">${e}<br><br>
+        请确保已部署到 Cloudflare Pages 并配置了环境变量。</span>
+      </li>`;
     }
   }
 
