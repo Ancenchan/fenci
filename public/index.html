@@ -110,6 +110,11 @@
     background: linear-gradient(135deg,#FF6699,#00BBDD);
     border: none; color: #fff; font-weight: 600;
   }
+  .mini-btn.danger {
+    background: #3a1520; border: 1px solid #5a2535; color: #f5a5a5;
+  }
+  .mini-btn.danger:hover { background: #5a1a2a; color: #fff; }
+  .mini-btn:disabled { opacity: .5; cursor: not-allowed; }
   .empty {
     text-align: center; padding: 20px; color: #6a6f99;
     font-size: 13px;
@@ -240,6 +245,7 @@
           <div class="actions">
             <a class="mini-btn" href="${apiBase}/songs/${encodeURIComponent(f.filename)}" target="_blank">打开</a>
             <button class="mini-btn primary" data-f="${f.filename}" data-name="${f.song_name}">预览</button>
+            <button class="mini-btn danger" data-del="${f.filename}" data-name="${f.song_name}">删除</button>
           </div>
         `;
         fileListEl.appendChild(li);
@@ -250,6 +256,30 @@
           const fn = btn.getAttribute('data-f');
           const nm = btn.getAttribute('data-name');
           previewFile(fn, nm);
+        });
+      });
+      // 绑定删除
+      fileListEl.querySelectorAll('button[data-del]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const fn = btn.getAttribute('data-del');
+          const nm = btn.getAttribute('data-name');
+          if (!confirm(`确定删除「${nm}」吗？\n这会从 GitHub 仓库永久移除该文件。`)) return;
+          btn.disabled = true;
+          btn.textContent = '删除中…';
+          try {
+            const res = await fetch(`${apiBase}/api/delete`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ filename: fn }),
+            });
+            const data = await res.json();
+            if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);
+            await refreshList();
+          } catch (e) {
+            alert(`删除失败：${e.message}`);
+            btn.disabled = false;
+            btn.textContent = '删除';
+          }
         });
       });
     } catch (e) {

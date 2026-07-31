@@ -2,7 +2,7 @@
 // Cloudflare Worker 入口：处理 API 路由，静态文件由 ASSETS 自动服务
 
 import { fetchPage, extractSongName, sanitizeFilename, parseLyrics, generateHtml } from '../lib/scraper.js';
-import { saveFile, listFiles, getFile } from '../lib/github.js';
+import { saveFile, listFiles, getFile, deleteFile } from '../lib/github.js';
 
 export default {
   async fetch(request, env) {
@@ -26,6 +26,27 @@ export default {
       try {
         const files = await listFiles(env);
         return json({ ok: true, files });
+      } catch (e) {
+        return json({ ok: false, error: e.message }, 500);
+      }
+    }
+
+    // ── /api/delete ────────────────────────────────
+    if (path === '/api/delete' && request.method === 'POST') {
+      let body;
+      try {
+        body = await request.json();
+      } catch (_) {
+        return json({ ok: false, error: '请求体不是有效的 JSON' }, 400);
+      }
+      const filename = (body.filename || '').trim();
+      if (!filename) return json({ ok: false, error: '缺少参数 filename' }, 400);
+      if (!filename.toLowerCase().endsWith('.html')) {
+        return json({ ok: false, error: '只能删除 .html 文件' }, 400);
+      }
+      try {
+        await deleteFile(env, filename);
+        return json({ ok: true, filename });
       } catch (e) {
         return json({ ok: false, error: e.message }, 500);
       }
