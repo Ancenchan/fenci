@@ -1,8 +1,8 @@
 // functions/api/scrape.js
 // POST /api/scrape  body: {"url": "https://projectsekai.fandom.com/wiki/..."}
 
-import { fetchPage, extractSongName, sanitizeFilename, parseLyrics, generateHtml } from '../_lib/scraper.js';
-import { saveFile } from '../_lib/github.js';
+import { fetchPage, extractSongName, sanitizeFilename, parseLyrics, generateHtml } from '../lib/scraper.js';
+import { saveFile } from '../lib/github.js';
 
 export async function onRequestPost({ env, request }) {
   let body;

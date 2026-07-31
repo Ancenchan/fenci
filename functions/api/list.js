@@ -1,7 +1,7 @@
 // functions/api/list.js
 // GET /api/list  → 列出 GitHub 仓库 lyrics/ 目录下的所有歌词文件
 
-import { listFiles } from '../_lib/github.js';
+import { listFiles } from '../lib/github.js';
 
 export async function onRequestGet({ env }) {
   try {

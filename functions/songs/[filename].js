@@ -1,7 +1,7 @@
 // functions/songs/[filename].js
 // GET /songs/:filename → 从 GitHub 读取并返回歌词 HTML
 
-import { getFile } from '../_lib/github.js';
+import { getFile } from '../lib/github.js';
 
 export async function onRequestGet({ env, params }) {
   const filename = params.filename;
