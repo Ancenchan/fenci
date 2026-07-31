@@ -183,19 +183,21 @@ def _json_error(e):
 # ─────────────────────────────────────────────────────────
 
 def main():
-    port = 5000
+    # Render 会通过 PORT 环境变量指定端口；本地可用命令行参数覆盖
+    port = int(os.environ.get('PORT', 5000))
     if len(sys.argv) > 1:
         try:
             port = int(sys.argv[1])
         except ValueError:
-            print(f'无效端口: {sys.argv[1]}，使用默认 5000')
+            print(f'无效端口: {sys.argv[1]}，使用默认 {port}')
 
     print('=' * 50)
     print(' Fenci 歌词控制台已启动')
     print(f'  地址: http://localhost:{port}/')
     print(f'  目录: {BASE_DIR}')
     print('=' * 50)
-    app.run(host='127.0.0.1', port=port, debug=False, use_reloader=False)
+    # 0.0.0.0 让外部网络可以访问（Render 必需）
+    app.run(host='0.0.0.0', port=port, debug=False, use_reloader=False)
 
 
 if __name__ == '__main__':
