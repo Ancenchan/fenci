@@ -331,6 +331,23 @@
     }
   }
 
+  // 带重试的列表刷新：等待 5 秒后检查新文件是否出现，最多重试 4 次
+  async function refreshListWithRetry(expectedFilename) {
+    const delays = [5000, 5000, 5000, 5000]; // 共 4 次，每次等 5 秒
+    for (let i = 0; i < delays.length; i++) {
+      await new Promise(r => setTimeout(r, delays[i]));
+      try {
+        const res = await fetch(`${apiBase}/api/list`, { cache: 'no-cache' });
+        const data = await res.json();
+        allFiles = data.files || [];
+        const found = allFiles.some(f => f.filename === expectedFilename);
+        renderFileList(filterFiles());
+        countEl.textContent = allFiles.length;
+        if (found) return; // 文件已出现，停止重试
+      } catch (_) { /* 忽略，继续重试 */ }
+    }
+  }
+
   searchInput.addEventListener('input', () => {
     renderFileList(filterFiles());
   });
@@ -431,8 +448,9 @@
         `✅ 生成成功：<b>${data.song_name}</b> ` +
         `<span style="opacity:.7;">(${data.tabs.join(' / ')} · ${fmtSize(data.size_bytes)})</span>`);
       songNameInput.value = ''; // 清空歌曲名
-      await refreshList();
       previewFile(data.filename, data.song_name);
+      // 延迟刷新列表（GitHub API 有延迟，刚提交的文件不会立即出现）
+      refreshListWithRetry(data.filename);
     } catch (e) {
       setStatus('error', `❌ 失败：${e.message}`);
     } finally {
