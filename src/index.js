@@ -67,7 +67,7 @@ export default {
         return json({ ok: false, error: 'URL 必须来自 projectsekai.fandom.com' }, 400);
       }
 
-      const songName = extractSongName(scrapeUrl);
+      const songName = (body.song_name || '').trim() || extractSongName(scrapeUrl);
       const filename = sanitizeFilename(songName) + '.html';
       const cleanUrl = scrapeUrl.split('#')[0];
 

@@ -180,18 +180,17 @@
     <!-- 爬取表单 -->
     <div class="panel">
       <h2>爬取新歌</h2>
-      <label for="songName">歌曲名（可选，填写后自动构造 URL）</label>
-      <input id="songName" type="text"
-             placeholder="例如：RAD DOGS"
-             style="margin-bottom: 12px;">
       <label for="url">歌词页面 URL</label>
       <input id="url" type="text"
              placeholder="https://projectsekai.fandom.com/wiki/RAD_DOGS">
+      <label for="songName" style="margin-top: 12px;">自定义歌曲名（可选，方便搜索）</label>
+      <input id="songName" type="text"
+             placeholder="留空则自动从页面提取">
       <button id="scrapeBtn" class="btn">开始爬取并生成 HTML</button>
       <div class="status" id="status"></div>
       <div class="tips">
-        填歌曲名会自动拼成 <code>https://projectsekai.fandom.com/wiki/歌曲名</code><br>
-        也可以直接粘贴完整 URL，歌词文件保存到 GitHub 仓库
+        示例：<code>https://projectsekai.fandom.com/wiki/RAD_DOGS</code><br>
+        填了自定义歌曲名会用作文件名和列表显示，方便搜索
       </div>
     </div>
 
@@ -395,16 +394,11 @@
 
   // ── 爬取 ──
   async function doScrape() {
-    // 优先用歌曲名构造 URL
-    const songName = songNameInput.value.trim();
-    let url = urlInput.value.trim();
+    const url = urlInput.value.trim();
+    const customName = songNameInput.value.trim();
 
-    if (songName) {
-      url = `https://projectsekai.fandom.com/wiki/${songName.replace(/\s+/g, '_')}`;
-      urlInput.value = url; // 同步到 URL 框方便确认
-    }
     if (!url) {
-      setStatus('error', '请输入歌曲名或 URL');
+      setStatus('error', '请输入 URL');
       return;
     }
     scrapeBtn.disabled = true;
@@ -415,7 +409,7 @@
       const res = await fetch(`${apiBase}/api/scrape`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url }),
+        body: JSON.stringify({ url, song_name: customName || undefined }),
       });
       let data;
       try {
