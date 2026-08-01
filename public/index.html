@@ -82,6 +82,17 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
+  /* 搜索框 */
+  .search-box {
+    margin-bottom: 10px;
+  }
+  .search-box input {
+    width: 100%; padding: 8px 10px; font-size: 13px;
+    border-radius: 6px; border: 1px solid #3a3e6f;
+    background: #10122a; color: #f1f1f8; outline: none;
+  }
+  .search-box input:focus { border-color: #62d8d8; }
+
   /* 文件列表 */
   .file-list { list-style: none; margin: 0; padding: 0; max-height: 420px; overflow: auto; }
   .file-list li {
@@ -89,21 +100,22 @@
     padding: 10px 12px; border-radius: 8px; margin-bottom: 6px;
     background: #10122a; border: 1px solid #2a2d55;
     transition: background .15s ease;
+    cursor: pointer;
   }
   .file-list li:hover { background: #181b3a; }
+  .file-list li.active { border-color: #62d8d8; background: #181b3a; }
   .file-list .name {
     font-size: 13px; color: #dfe2f7; font-weight: 600;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    max-width: 200px;
+    max-width: 240px;
   }
   .file-list .meta {
     font-size: 11px; color: #7d81a6; margin-top: 2px;
   }
-  .file-list .actions { display: flex; gap: 6px; flex-shrink: 0; }
   .mini-btn {
     padding: 5px 10px; font-size: 11px; border-radius: 6px;
     background: #22254a; color: #cfd2ee; border: 1px solid #32365e;
-    cursor: pointer; text-decoration: none;
+    cursor: pointer; text-decoration: none; white-space: nowrap;
   }
   .mini-btn:hover { background: #2d3163; color: #fff; }
   .mini-btn.primary {
@@ -134,7 +146,7 @@
   .preview-header h2 {
     margin: 0; font-size: 15px; color: #dfe2f7;
   }
-  .preview-header .actions { display: flex; gap: 8px; }
+  .preview-header .actions { display: flex; gap: 8px; align-items: center; }
   .preview-wrap iframe {
     flex: 1; border: none; width: 100%;
     background: #1a1a2e; border-radius: 8px;
@@ -145,6 +157,17 @@
     color: #6a6f99; font-size: 14px;
     border: 2px dashed #2a2d55; border-radius: 8px;
   }
+
+  /* 复制成功提示 */
+  .copy-toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #33CCBB; color: #062727; padding: 10px 20px;
+    border-radius: 8px; font-size: 13px; font-weight: 600;
+    box-shadow: 0 4px 16px rgba(0,0,0,.3);
+    opacity: 0; pointer-events: none; transition: opacity .3s ease;
+    z-index: 999;
+  }
+  .copy-toast.show { opacity: 1; }
 </style>
 </head>
 <body>
@@ -157,21 +180,27 @@
     <!-- 爬取表单 -->
     <div class="panel">
       <h2>爬取新歌</h2>
+      <label for="songName">歌曲名（可选，填写后自动构造 URL）</label>
+      <input id="songName" type="text"
+             placeholder="例如：RAD DOGS"
+             style="margin-bottom: 12px;">
       <label for="url">歌词页面 URL</label>
       <input id="url" type="text"
-             placeholder="https://projectsekai.fandom.com/wiki/RAD_DOGS"
-             value="https://projectsekai.fandom.com/wiki/RAD_DOGS">
+             placeholder="https://projectsekai.fandom.com/wiki/RAD_DOGS">
       <button id="scrapeBtn" class="btn">开始爬取并生成 HTML</button>
       <div class="status" id="status"></div>
       <div class="tips">
-        示例：<code>https://projectsekai.fandom.com/wiki/RAD_DOGS</code><br>
-        歌词文件会自动保存到 GitHub 仓库
+        填歌曲名会自动拼成 <code>https://projectsekai.fandom.com/wiki/歌曲名</code><br>
+        也可以直接粘贴完整 URL，歌词文件保存到 GitHub 仓库
       </div>
     </div>
 
     <!-- 已生成文件列表 -->
     <div class="panel">
       <h2>已生成歌词 <span id="count" style="color:#62d8d8;float:right;">0</span></h2>
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="🔍 搜索歌曲名…">
+      </div>
       <ul id="fileList" class="file-list"></ul>
     </div>
   </aside>
@@ -180,8 +209,10 @@
   <section class="preview-wrap">
     <div class="preview-header">
       <h2 id="previewTitle">预览</h2>
-      <div class="actions">
-        <a id="openTabBtn" class="mini-btn" href="#" target="_blank" style="display:none;">新标签页打开 ↗</a>
+      <div class="actions" id="previewActions" style="display:none;">
+        <a id="openTabBtn" class="mini-btn" href="#" target="_blank">新标签页打开 ↗</a>
+        <button id="copyHtmlBtn" class="mini-btn">复制 HTML</button>
+        <button id="deleteBtn" class="mini-btn danger">删除</button>
       </div>
     </div>
     <div id="previewEmpty" class="preview-empty">
@@ -191,6 +222,8 @@
   </section>
 </div>
 
+<div class="copy-toast" id="copyToast">✅ HTML 已复制到剪贴板</div>
+
 <script>
   const $ = (id) => document.getElementById(id);
   const apiBase = ''; // 同源即可
@@ -198,12 +231,21 @@
   const statusEl = $('status');
   const scrapeBtn = $('scrapeBtn');
   const urlInput = $('url');
+  const songNameInput = $('songName');
+  const searchInput = $('searchInput');
   const fileListEl = $('fileList');
   const countEl = $('count');
   const previewEmpty = $('previewEmpty');
   const previewFrame = $('previewFrame');
   const previewTitle = $('previewTitle');
   const openTabBtn = $('openTabBtn');
+  const previewActions = $('previewActions');
+  const copyHtmlBtn = $('copyHtmlBtn');
+  const deleteBtn = $('deleteBtn');
+  const copyToast = $('copyToast');
+
+  let allFiles = [];        // 全部文件列表
+  let currentFile = null;   // 当前预览的文件 { filename, song_name }
 
   function setStatus(kind, text) {
     statusEl.className = 'status show ' + kind;
@@ -224,64 +266,57 @@
     return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
   }
 
+  function renderFileList(files) {
+    fileListEl.innerHTML = '';
+    if (files.length === 0) {
+      fileListEl.innerHTML = '<li class="empty">没有匹配的歌词文件</li>';
+      return;
+    }
+    files.forEach(f => {
+      const li = document.createElement('li');
+      if (currentFile && currentFile.filename === f.filename) {
+        li.classList.add('active');
+      }
+      li.innerHTML = `
+        <div>
+          <div class="name" title="${f.song_name}">${f.song_name}</div>
+          <div class="meta">${fmtSize(f.size)}${f.mtime ? ' · ' + fmtTime(f.mtime) : ''}</div>
+        </div>
+        <div class="actions">
+          <button class="mini-btn primary" data-f="${f.filename}" data-name="${f.song_name}">预览</button>
+        </div>
+      `;
+      // 点击整行也能预览
+      li.addEventListener('click', (e) => {
+        if (e.target.tagName === 'BUTTON') return;
+        previewFile(f.filename, f.song_name);
+      });
+      fileListEl.appendChild(li);
+    });
+    // 绑定预览
+    fileListEl.querySelectorAll('button[data-f]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const fn = btn.getAttribute('data-f');
+        const nm = btn.getAttribute('data-name');
+        previewFile(fn, nm);
+      });
+    });
+  }
+
+  function filterFiles() {
+    const q = searchInput.value.trim().toLowerCase();
+    if (!q) return allFiles;
+    return allFiles.filter(f => f.song_name.toLowerCase().includes(q));
+  }
+
   async function refreshList() {
     try {
       const res = await fetch(`${apiBase}/api/list`, { cache: 'no-cache' });
       const data = await res.json();
-      const files = data.files || [];
-      countEl.textContent = files.length;
-      fileListEl.innerHTML = '';
-      if (files.length === 0) {
-        fileListEl.innerHTML = '<li class="empty">还没有歌词文件，先从上方爬取一首吧</li>';
-        return;
-      }
-      files.forEach(f => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-          <div>
-            <div class="name" title="${f.song_name}">${f.song_name}</div>
-            <div class="meta">${fmtSize(f.size)}${f.mtime ? ' · ' + fmtTime(f.mtime) : ''}</div>
-          </div>
-          <div class="actions">
-            <a class="mini-btn" href="${apiBase}/songs/${encodeURIComponent(f.filename)}" target="_blank">打开</a>
-            <button class="mini-btn primary" data-f="${f.filename}" data-name="${f.song_name}">预览</button>
-            <button class="mini-btn danger" data-del="${f.filename}" data-name="${f.song_name}">删除</button>
-          </div>
-        `;
-        fileListEl.appendChild(li);
-      });
-      // 绑定预览
-      fileListEl.querySelectorAll('button[data-f]').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const fn = btn.getAttribute('data-f');
-          const nm = btn.getAttribute('data-name');
-          previewFile(fn, nm);
-        });
-      });
-      // 绑定删除
-      fileListEl.querySelectorAll('button[data-del]').forEach(btn => {
-        btn.addEventListener('click', async () => {
-          const fn = btn.getAttribute('data-del');
-          const nm = btn.getAttribute('data-name');
-          if (!confirm(`确定删除「${nm}」吗？\n这会从 GitHub 仓库永久移除该文件。`)) return;
-          btn.disabled = true;
-          btn.textContent = '删除中…';
-          try {
-            const res = await fetch(`${apiBase}/api/delete`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ filename: fn }),
-            });
-            const data = await res.json();
-            if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);
-            await refreshList();
-          } catch (e) {
-            alert(`删除失败：${e.message}`);
-            btn.disabled = false;
-            btn.textContent = '删除';
-          }
-        });
-      });
+      allFiles = data.files || [];
+      countEl.textContent = allFiles.length;
+      renderFileList(filterFiles());
     } catch (e) {
       countEl.textContent = '?';
       fileListEl.innerHTML = `<li class="empty" style="color:#f5a5a5; line-height:1.8;">
@@ -292,6 +327,10 @@
     }
   }
 
+  searchInput.addEventListener('input', () => {
+    renderFileList(filterFiles());
+  });
+
   function previewFile(filename, displayName) {
     const url = `${apiBase}/songs/${encodeURIComponent(filename)}`;
     previewEmpty.style.display = 'none';
@@ -299,13 +338,73 @@
     previewFrame.src = url;
     previewTitle.textContent = `预览 · ${displayName || filename}`;
     openTabBtn.href = url;
-    openTabBtn.style.display = 'inline-block';
+    previewActions.style.display = 'flex';
+    currentFile = { filename, song_name: displayName || filename };
+    // 更新列表高亮
+    renderFileList(filterFiles());
   }
 
+  // ── 删除当前预览的文件 ──
+  deleteBtn.addEventListener('click', async () => {
+    if (!currentFile) return;
+    const { filename, song_name } = currentFile;
+    if (!confirm(`确定删除「${song_name}」吗？\n这会从 GitHub 仓库永久移除该文件。`)) return;
+    deleteBtn.disabled = true;
+    deleteBtn.textContent = '删除中…';
+    try {
+      const res = await fetch(`${apiBase}/api/delete`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);
+      // 清空预览
+      currentFile = null;
+      previewFrame.style.display = 'none';
+      previewEmpty.style.display = 'flex';
+      previewTitle.textContent = '预览';
+      previewActions.style.display = 'none';
+      await refreshList();
+    } catch (e) {
+      alert(`删除失败：${e.message}`);
+    } finally {
+      deleteBtn.disabled = false;
+      deleteBtn.textContent = '删除';
+    }
+  });
+
+  // ── 复制 HTML 代码 ──
+  copyHtmlBtn.addEventListener('click', async () => {
+    if (!currentFile) return;
+    copyHtmlBtn.textContent = '获取中…';
+    copyHtmlBtn.disabled = true;
+    try {
+      const res = await fetch(`${apiBase}/songs/${encodeURIComponent(currentFile.filename)}`);
+      const html = await res.text();
+      await navigator.clipboard.writeText(html);
+      copyToast.classList.add('show');
+      setTimeout(() => copyToast.classList.remove('show'), 2000);
+    } catch (e) {
+      alert(`复制失败：${e.message}`);
+    } finally {
+      copyHtmlBtn.textContent = '复制 HTML';
+      copyHtmlBtn.disabled = false;
+    }
+  });
+
+  // ── 爬取 ──
   async function doScrape() {
-    const url = urlInput.value.trim();
+    // 优先用歌曲名构造 URL
+    const songName = songNameInput.value.trim();
+    let url = urlInput.value.trim();
+
+    if (songName) {
+      url = `https://projectsekai.fandom.com/wiki/${songName.replace(/\s+/g, '_')}`;
+      urlInput.value = url; // 同步到 URL 框方便确认
+    }
     if (!url) {
-      setStatus('error', '请输入 URL');
+      setStatus('error', '请输入歌曲名或 URL');
       return;
     }
     scrapeBtn.disabled = true;
@@ -322,7 +421,6 @@
       try {
         data = await res.json();
       } catch (_) {
-        // 非 JSON 响应，尽量提取文本
         const text = await res.text().catch(() => '');
         const shortText = text.length > 300 ? text.slice(0, 300) + '…' : text;
         throw new Error(`服务器返回非 JSON (HTTP ${res.status}): ${shortText || '无内容'}`);
@@ -333,6 +431,7 @@
       setStatus('success',
         `✅ 生成成功：<b>${data.song_name}</b> ` +
         `<span style="opacity:.7;">(${data.tabs.join(' / ')} · ${fmtSize(data.size_bytes)})</span>`);
+      songNameInput.value = ''; // 清空歌曲名
       await refreshList();
       previewFile(data.filename, data.song_name);
     } catch (e) {
@@ -344,6 +443,9 @@
 
   scrapeBtn.addEventListener('click', doScrape);
   urlInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') doScrape();
+  });
+  songNameInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') doScrape();
   });
 
