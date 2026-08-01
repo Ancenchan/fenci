@@ -67,19 +67,21 @@ export default {
         return json({ ok: false, error: 'URL 必须来自 projectsekai.fandom.com' }, 400);
       }
 
-      const songName = (body.song_name || '').trim() || extractSongName(scrapeUrl);
-      const filename = sanitizeFilename(songName) + '.html';
+      const pageName = extractSongName(scrapeUrl);
+      const customName = (body.song_name || '').trim();
+      const displayName = customName || pageName;
+      const filename = sanitizeFilename(displayName) + '.html';
       const cleanUrl = scrapeUrl.split('#')[0];
 
       try {
         const rawHtml = await fetchPage(scrapeUrl);
         const tabsData = parseLyrics(rawHtml);
-        const finalHtml = generateHtml(songName, cleanUrl, tabsData);
+        const finalHtml = generateHtml(pageName, cleanUrl, tabsData);
         const result = await saveFile(env, filename, finalHtml);
 
         return json({
           ok: true,
-          song_name: songName,
+          song_name: displayName,
           filename,
           tabs: tabsData.map(t => t.name),
           view_url: `/songs/${filename}`,
