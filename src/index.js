@@ -95,7 +95,15 @@ export default {
 
     // ── /songs/:filename ───────────────────────────
     if (path.startsWith('/songs/') && request.method === 'GET') {
-      const filename = path.split('/songs/')[1];
+      const rawFilename = path.split('/songs/')[1];
+      // 前端用 encodeURIComponent(filename) 构造 URL，这里必须解码
+      // 否则日文/特殊字符文件名会传给 GitHub API 时被二次编码 → 404
+      let filename;
+      try {
+        filename = decodeURIComponent(rawFilename);
+      } catch (_) {
+        filename = rawFilename;
+      }
       if (!filename || !filename.toLowerCase().endsWith('.html')) {
         return new Response('Not Found', { status: 404 });
       }
