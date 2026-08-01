@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>kitty - 歌词</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "Hiragino Sans", "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+    background: #1a1a2e; color: #eee; line-height: 1.7;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 {
+    text-align: center; font-size: 28px; margin: 0 0 8px;
+    background: linear-gradient(90deg,#FF6699,#33CCBB,#FF7722,#0077DD);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { text-align: center; color: #aaa; margin: 0 0 32px; font-size: 14px; }
+  .tabs {
+    display: flex; border-bottom: 2px solid #333; margin: 0; padding: 0; list-style: none;
+  }
+  .tab-btn {
+    flex: 1; padding: 12px 16px; background: transparent; border: none;
+    color: #bbb; cursor: pointer; font-size: 15px; font-weight: 600;
+    border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s ease;
+  }
+  .tab-btn:hover { color: #fff; background: rgba(255,255,255,.04); }
+  .tab-btn.active { color: #62d8d8; border-bottom-color: #62d8d8; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .poem {
+    color: #fff; background: rgba(40,40,40,.9); text-shadow: 0 0 .5em #000;
+    padding: 28px 32px; border-radius: 0 0 12px 12px; font-size: 15px;
+    white-space: normal; word-break: break-word;
+  }
+  .poem p { margin: 0 0 12px; }
+  .poem b { font-size: 16px; }
+  ruby { display: inline-flex; flex-direction: column-reverse; align-items: center; line-height: 1; }
+  ruby > rt { font-size: .55em; color: #bbb; line-height: 1.2; margin-bottom: 2px; }
+  ruby > rp { display: none; }
+  footer { text-align: center; color: #777; font-size: 12px; margin-top: 40px; }
+  footer a { color: #62d8d8; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>kitty</h1>
+  <p class="subtitle">Project SEKAI Wiki</p>
+  <ul class="tabs" role="tablist">
+    <li><button class="tab-btn active" data-tab="romaji" role="tab">Romaji</button></li>
+    <li><button class="tab-btn" data-tab="japanese" role="tab">Japanese</button></li>
+    <li><button class="tab-btn" data-tab="english" role="tab">English</button></li>
+  </ul>
+  <div id="romaji" class="tab-panel active">
+    <div class="poem">
+<p><b><span style="color:#FFEE11;">Len</span> • <span style="color:#BB6688;">Kanade</span> • <span style="color:#8888CC;">Mafuyu</span> • <span style="color:#CCAA88;">Ena</span> • <span style="color:#DDAACC;">Mizuki</span></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#DDAACC;">ajike no nai yoru ni toketa yuki ga,<br />
+kotoba wo karasu no wa naze?</span><br />
+<span style="color:#FFEE11;">tsutawaranai omoi dake ga kokoro somete,<br />
+kanashimi ni oboreta you na,</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">utakata no hazu baraddo.</span><br />
+<br />
+<span style="color:#8888CC;">jitsugetsu sae mo kodoku na tenge de,</span><br />
+<span style="color:#CCAA88;">karamatte hodoite wo rinne suru gusha no mure.</span><br />
+<span style="color:#BB6688;">marude, ichiyou ni hitori to shitta hansha de</span><br />
+<span style="color:#FFEE11;">chouwa wo hakaru, honnou no mama no kiti.</span><br />
+<br />
+<span style="color:#CCAA88;">aa, doko ni mo shinsekai nante nai.<br />
+hitori de aishi, aisarete itai.</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">hatashite kyou wa kyou nara kinou wa dou?<br />
+tsumari towa ni fukou tte koto?</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">sore nara, dou ni kashitai shidai.<br />
+soredemo chokushi nante dekinai.</span><br />
+<span style="color:#DDAACC;">mata, rettou to shousou ga niramiatte iru.</span><br />
+<br />
+<span style="color:#8888CC;">nogareru koto to, me wo sorasu koto,<br />
+dochira ni kachi ga aru darou?</span><br />
+<span style="color:#FFEE11;">tada koko de, mondou meisou<br />
+jaa, tsuttatte mo meisou.</span><br />
+<span style="color:#DDAACC;">saa ten to ten wo musubu you ni,</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">tashika na</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ai ga mitai nara, oto ni natte ima nigedashite!</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">itsuwaranakuta tte sakenda senritsu ga hikari to kashite tsutau no sa.</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">kono uta</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ga machigai demo kamawanai wa. koe wo karashite!</span><br />
+<span style="color:#DDAACC;">kakinarase,</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">buruusu doraiba ando terekyasuta.<br />
+kotae wa oto no naka.</span><br />
+<br />
+<span style="color:#BB6688;">eeemu wan okurokku, keishou randa ni okosu mabuta.</span><br />
+<span style="color:#8888CC;">atashi wa "nani ga shitai"</span> <span style="color:#FFEE11;">"nani ga shitai"</span><br />
+<span style="color:#8888CC;">"nani ga shitai" to shunjun no aida,</span><br />
+<span style="color:#CCAA88;">yokei na koto bakari ga atama no naka karamatte ita.</span><br />
+<span style="color:#FFEE11;">tansei korashita peipaakurafuto wa chakkazai to kashita.</span><br />
+<br />
+<span style="color:#DDAACC;">rettoukan, jikkan, hikan de,<br />
+katte ni kuratte passhiviti.</span><br />
+<span style="color:#FFEE11;">ensouka minamina de<br />
+kappa suru seitaikei?</span><br />
+<br />
+<span style="color:#BB6688;">sore de wa, henkousei kara botsukosei de<br />
+rekka suru sai ga oshiku natte shimau.</span><br />
+<span style="color:#CCAA88;">futsugou nado ketobashite<br />
+meimei ni odore ya. wan, tuu, surii, foo.</span><br />
+<br />
+<span style="color:#DDAACC;">nogareru koto to, me wo sorasu koto,<br />
+dochira ni kachi ga aru darou?</span><br />
+<span style="color:#8888CC;">tada koko de, mondou meisou<br />
+jaa, tsuttatte mo meisou.</span><br />
+<span style="color:#FFEE11;">saa ten to ten wo musubu you ni,</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">tashika na</span> <span style="display: inline; background: linear-gradient(to bottom, #BB6688,#CCAA88,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ai ga mitai nara, oto ni natte ima nigedashite!</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">itsuwaranakutatte sakenda senritsu ga hikari to kashite tsutau no sa.</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">kono uta</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ga machigai demo kamawanai wa. koe wo karashite!</span><br />
+<span style="color:#DDAACC;">kakinarase,</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">buruusu doraiba ando terekyasuta.<br />
+kotae wa oto no naka.</span><br />
+<br />
+<span style="color:#DDAACC;">soshite, atashi no naka.</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <div id="japanese" class="tab-panel">
+    <div class="poem">
+<p><b><span style="color:#FFEE11;">レン</span> • <span style="color:#BB6688;">奏</span> • <span style="color:#8888CC;">まふゆ</span> • <span style="color:#CCAA88;">絵名</span> • <span style="color:#DDAACC;">瑞希</span></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#DDAACC;">味気の無い夜に熔けた雪が、<br />
+言葉を枯らすのは何故？</span><br />
+<span style="color:#FFEE11;">伝わらない想いだけがこころ染めて、<br />
+かなしみに溺れたような、</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">泡沫の爆ずバラッド。</span><br />
+<br />
+<span style="color:#8888CC;">日月さえも孤独な天下で、</span><br />
+<span style="color:#CCAA88;">絡まって解いてを輪廻する愚者の群。</span><br />
+<span style="color:#BB6688;">まるで、一様に独りと識った反射で</span><br />
+<span style="color:#FFEE11;">調和を謀る、本能の儘のキティ。</span><br />
+<br />
+<span style="color:#CCAA88;">嗚呼、何処にも新世界なんて無い。<br />
+独りで愛し、愛されて居たい。</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">果たして今日は凶なら昨日は如何？<br />
+詰まり永遠に不幸ってこと？</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">其れなら、如何にかしたい次第。<br />
+其れでも直視なんて出来ない。</span><br />
+<span style="color:#DDAACC;">また、劣等と焦燥が睨み合って居る。</span><br />
+<br />
+<span style="color:#8888CC;">逃れることと、眼を逸らすこと、<br />
+何方に価値が有るだろう？</span><br />
+<span style="color:#FFEE11;">ただ此処で、問答・瞑想<br />
+じゃあ、突立っても迷走。</span><br />
+<span style="color:#DDAACC;">さあ点と点を結ぶように、</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">確かな</span><span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">愛が視たいなら、音に成って今逃げ出して！</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">偽らなくたって叫んだ旋律がひかりと化して伝うのさ。</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">此の歌</span><span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">が間違いでも構わないわ。声を枯らして！</span><br />
+<span style="color:#DDAACC;">掻鳴らせ、</span><span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ブルウスドライバ・アンド・テレキャスタ。<br />
+答えは音の中。</span><br />
+<br />
+<span style="color:#BB6688;"><ruby><rb>午前一時</rb><rp>(</rp><rt>エーエムワンオクロック</rt><rp>)</rp></ruby>、警鐘亂打に起こす瞼。</span><br />
+<span style="color:#8888CC;">あたしは「何がしたい」</span><span style="color:#FFEE11;">「何がしたい」</span><br />
+<span style="color:#8888CC;">「何がしたい」と逡巡の間、</span><br />
+<span style="color:#CCAA88;">余計なことばかりが頭の中絡まっていた。</span><br />
+<span style="color:#FFEE11;">丹精凝らしたペイパークラフトは着火剤と化した。</span><br />
+<br />
+<span style="color:#DDAACC;">劣等感、実感、悲観で、<br />
+勝手に喰らってパッシヴィティ。</span><br />
+<span style="color:#FFEE11;">演奏家皆皆で<br />
+喝破する生態系？</span><br />
+<br />
+<span style="color:#BB6688;">それでは、変光星から没個性で<br />
+劣化する才が惜しくなってしまう。</span><br />
+<span style="color:#CCAA88;">不都合等蹴飛ばして<br />
+銘銘に踊れや。<ruby><rb>一、二、三、四</rb><rp>(</rp><rt>ワン、トゥー、スリー、フォー</rt><rp>)</rp></ruby>。</span><br />
+<br />
+<span style="color:#DDAACC;">逃れることと、眼を逸らすこと、<br />
+何方に価値が有るだろう？</span><br />
+<span style="color:#8888CC;">ただ此処で、問答・瞑想<br />
+じゃあ、突立っても迷走。</span><br />
+<span style="color:#FFEE11;">さあ点と点を結ぶように、</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">確かな</span><span style="display: inline; background: linear-gradient(to bottom, #BB6688,#CCAA88,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">愛が視たいなら、音に成って今逃げ出して！</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">偽らなくたって叫んだ旋律がひかりと化して伝うのさ。</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">この歌</span><span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">が間違いでも構わないわ。声を枯らして！</span><br />
+<span style="color:#DDAACC;">掻鳴らせ、</span><span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">ブルウスドライバ・アンド・テレキャスタ。<br />
+答えは音の中。</span><br />
+<br />
+<span style="color:#DDAACC;">そして、あたしの中。</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <div id="english" class="tab-panel">
+    <div class="poem">
+<p><b><span style="color:#FFEE11;">Len</span> • <span style="color:#BB6688;">Kanade</span> • <span style="color:#8888CC;">Mafuyu</span> • <span style="color:#CCAA88;">Ena</span> • <span style="color:#DDAACC;">Mizuki</span></b><br />
+<b>English Translation by <a href="https://vocaloidlyrics.miraheze.org/wiki/キティ_(Kitty)/Tsumiki" target="_blank" rel="nofollow noreferrer noopener">Shiru</a></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#DDAACC;">Why does the snow that melts into the dreary night<br />
+Wither away all the words I have to say?</span><br />
+<span style="color:#FFEE11;">My heart is dyed in feelings I can't convey,<br />
+It's like I'm drowning in despair,</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Singing a ballad of bursting bubbles</span><br />
+<br />
+<span style="color:#8888CC;">In a world where even the sun and moon are lonely,</span><br />
+<span style="color:#CCAA88;">We're a group of fools who intertwine and separate again and again, trapped in that cycle</span><br />
+<span style="color:#BB6688;">It's like a reflection of the fact that each of us is all alone,</span><br />
+<span style="color:#FFEE11;">Plotting how to achieve harmony, I'm a kitty that follows its instincts</span><br />
+<br />
+<span style="color:#CCAA88;">Ah, no matter where I go, there's no new world<br />
+I just want to love and be loved on my own</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Sure enough, if "today" is "inauspicious," then how'd yesterday go?<br />
+Does that mean I'm fated to forever live in sorrow?</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If so, my life will be determined by what I want to do about it<br />
+But even so, I can't face life</span><br />
+<span style="color:#DDAACC;">Again, my sense of inferiority and impatience are glaring at each other</span><br />
+<br />
+<span style="color:#8888CC;">Running away and escaping, or averting my eyes,<br />
+Which of those is worth my time?</span><br />
+<span style="color:#FFEE11;">I'm just here, contemplating the right answer,<br />
+Straying off course even though I'm standing here with perfect posture</span><br />
+<span style="color:#DDAACC;">Well then, let's see if we can connect these dots together...</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If you want to experience</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">a real</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">love, then put that into a song, and flee!</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Even if you don't lie, the melody that you scream out will turn into light and spread</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I don't care if</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">this song</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">is wrong. I'll sing my throat hoarse!</span><br />
+<span style="color:#DDAACC;">Ring out,</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Blues Driver and Telecaster!<br />
+The answer lies within this song</span><br />
+<br />
+<span style="color:#BB6688;">It's 25:00 o'clock, my eyes shoot open, as I'm awoken by the clanging of my alarm bell</span><br />
+<span style="color:#8888CC;">I'm stuck wondering "What do I want to do?"</span><br />
+<span style="color:#FFEE11;">"What do I want to do?"</span> <span style="color:#8888CC;">"What do I want to do?",</span><br />
+<span style="color:#CCAA88;">My brain's tangled up in unnecessary thoughts</span><br />
+<span style="color:#FFEE11;">This papercraft, painstakingly made, has become kindling</span><br />
+<br />
+<span style="color:#DDAACC;">With my sense of inferiority, pessimism,<br />
+And what I'm actually feeling, I'm taking in all my passivity</span><br />
+<span style="color:#FFEE11;">Do we live in an ecosystem<br />
+Where musicians declare their truths?</span><br />
+<br />
+<span style="color:#BB6688;">Well, it's disappointing when someone with talent falls from<br />
+Being a variable star to being dull and lifeless</span><br />
+<span style="color:#CCAA88;">So, send all your troubles flying<br />
+And dance as you please! One, two, three, four!</span><br />
+<br />
+<span style="color:#DDAACC;">Running away and escaping, or averting my eyes,<br />
+Which of those is worth my time?</span><br />
+<span style="color:#8888CC;">I'm just here, contemplating the right answer,<br />
+Straying off course even though I'm standing here with perfect posture</span><br />
+<span style="color:#FFEE11;">Well then, let's see if we can connect these dots together...</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#CCAA88,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If you want to experience</span> <span style="display: inline; background: linear-gradient(to bottom, #BB6688,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">a real</span> <span style="display: inline; background: linear-gradient(to bottom, #BB6688,#CCAA88,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">love, then put that into a song, and flee!</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#BB6688); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Even if you don't lie, the melody that you scream out will turn into light and spread</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I don't care if</span> <span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">this song</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">is wrong. I'll sing my throat hoarse!</span><br />
+<span style="color:#DDAACC;">Ring out,</span> <span style="display: inline; background: linear-gradient(to bottom, #FFEE11,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Blues Driver and Telecaster!<br />
+The answer lies within this song</span><br />
+<br />
+<span style="color:#DDAACC;">And therefore, my answer lies within me</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <footer>Source: <a href="https://projectsekai.fandom.com/wiki/kitty" target="_blank" rel="noopener">Project SEKAI Wiki</a></footer>
+</div>
+<script>
+  var buttons = document.querySelectorAll('.tab-btn');
+  var panels  = document.querySelectorAll('.tab-panel');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.dataset.tab;
+      buttons.forEach(function(b) { b.classList.toggle('active', b === btn); });
+      panels.forEach(function(p) { p.classList.toggle('active', p.id === target); });
+    });
+  });
+</script>
+</body>
+</html>
