@@ -93,6 +93,21 @@
   }
   .search-box input:focus { border-color: #62d8d8; }
 
+  /* 分页 */
+  .pagination {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid #2a2d55;
+  }
+  .pg-btn {
+    padding: 6px 12px; font-size: 12px; border-radius: 6px;
+    background: #22254a; color: #cfd2ee; border: 1px solid #32365e;
+    cursor: pointer;
+  }
+  .pg-btn:hover:not(:disabled) { background: #2d3163; color: #fff; }
+  .pg-btn:disabled { opacity: .4; cursor: not-allowed; }
+  .pg-info { font-size: 12px; color: #7d81a6; }
+
   /* 文件列表 */
   .file-list { list-style: none; margin: 0; padding: 0; max-height: 420px; overflow: auto; }
   .file-list li {
@@ -206,6 +221,11 @@
         <input id="searchInput" type="text" placeholder="🔍 搜索歌曲名…">
       </div>
       <ul id="fileList" class="file-list"></ul>
+      <div id="pagination" class="pagination" style="display:none;">
+        <button class="pg-btn" id="pgPrev" disabled>‹ 上一页</button>
+        <span class="pg-info" id="pgInfo"></span>
+        <button class="pg-btn" id="pgNext">下一页 ›</button>
+      </div>
     </div>
   </aside>
 
@@ -250,6 +270,21 @@
 
   let allFiles = [];        // 全部文件列表
   let currentFile = null;   // 当前预览的文件 { filename, song_name }
+  const PAGE_SIZE = 5;
+  let currentPage = 1;
+
+  const pgPrevBtn = $('pgPrev');
+  const pgNextBtn = $('pgNext');
+  const pgInfoEl = $('pgInfo');
+  const paginationEl = $('pagination');
+
+  pgPrevBtn.addEventListener('click', () => {
+    if (currentPage > 1) { currentPage--; renderFileList(filterFiles()); }
+  });
+  pgNextBtn.addEventListener('click', () => {
+    const totalPages = Math.ceil(filterFiles().length / PAGE_SIZE);
+    if (currentPage < totalPages) { currentPage++; renderFileList(filterFiles()); }
+  });
 
   function setStatus(kind, text) {
     statusEl.className = 'status show ' + kind;
@@ -272,11 +307,20 @@
 
   function renderFileList(files) {
     fileListEl.innerHTML = '';
-    if (files.length === 0) {
+    const totalItems = files.length;
+    const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const paged = files.slice(start, start + PAGE_SIZE);
+
+    if (totalItems === 0) {
       fileListEl.innerHTML = '<li class="empty">没有匹配的歌词文件</li>';
+      paginationEl.style.display = 'none';
       return;
     }
-    files.forEach(f => {
+
+    paged.forEach(f => {
       const li = document.createElement('li');
       if (currentFile && currentFile.filename === f.filename) {
         li.classList.add('active');
@@ -290,14 +334,12 @@
           <button class="mini-btn primary" data-f="${f.filename}" data-name="${f.song_name}">预览</button>
         </div>
       `;
-      // 点击整行也能预览
       li.addEventListener('click', (e) => {
         if (e.target.tagName === 'BUTTON') return;
         previewFile(f.filename, f.song_name);
       });
       fileListEl.appendChild(li);
     });
-    // 绑定预览
     fileListEl.querySelectorAll('button[data-f]').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
@@ -306,6 +348,15 @@
         previewFile(fn, nm);
       });
     });
+
+    if (totalItems > PAGE_SIZE) {
+      paginationEl.style.display = 'flex';
+      pgInfoEl.textContent = `第 ${currentPage} / ${totalPages} 页（共 ${totalItems} 首）`;
+      pgPrevBtn.disabled = currentPage <= 1;
+      pgNextBtn.disabled = currentPage >= totalPages;
+    } else {
+      paginationEl.style.display = 'none';
+    }
   }
 
   function filterFiles() {
@@ -349,6 +400,7 @@
   }
 
   searchInput.addEventListener('input', () => {
+    currentPage = 1;
     renderFileList(filterFiles());
   });
 
