@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>machi - 歌词</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "Hiragino Sans", "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+    background: #1a1a2e; color: #eee; line-height: 1.7;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 {
+    text-align: center; font-size: 28px; margin: 0 0 8px;
+    background: linear-gradient(90deg,#FF6699,#33CCBB,#FF7722,#0077DD);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { text-align: center; color: #aaa; margin: 0 0 32px; font-size: 14px; }
+  .tabs {
+    display: flex; border-bottom: 2px solid #333; margin: 0; padding: 0; list-style: none;
+  }
+  .tab-btn {
+    flex: 1; padding: 12px 16px; background: transparent; border: none;
+    color: #bbb; cursor: pointer; font-size: 15px; font-weight: 600;
+    border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s ease;
+  }
+  .tab-btn:hover { color: #fff; background: rgba(255,255,255,.04); }
+  .tab-btn.active { color: #62d8d8; border-bottom-color: #62d8d8; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .poem {
+    color: #fff; background: rgba(40,40,40,.9); text-shadow: 0 0 .5em #000;
+    padding: 28px 32px; border-radius: 0 0 12px 12px; font-size: 15px;
+    white-space: normal; word-break: break-word;
+  }
+  .poem p { margin: 0 0 12px; }
+  .poem b { font-size: 16px; }
+  ruby { display: inline-flex; flex-direction: column-reverse; align-items: center; line-height: 1; }
+  ruby > rt { font-size: .55em; color: #bbb; line-height: 1.2; margin-bottom: 2px; }
+  ruby > rp { display: none; }
+  footer { text-align: center; color: #777; font-size: 12px; margin-top: 40px; }
+  footer a { color: #62d8d8; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>machi</h1>
+  <p class="subtitle">Project SEKAI Wiki</p>
+  <ul class="tabs" role="tablist">
+    <li><button class="tab-btn active" data-tab="romaji" role="tab">Romaji</button></li>
+    <li><button class="tab-btn" data-tab="japanese" role="tab">Japanese</button></li>
+    <li><button class="tab-btn" data-tab="english" role="tab">English</button></li>
+  </ul>
+  <div id="romaji" class="tab-panel active">
+    <div class="poem">
+<p><b><span style="color:#FFCC11;">Rin</span> • <span style="color:#FF6699;">Kohane</span> • <span style="color:#00BBDD;">An</span> • <span style="color:#FF7722;">Akito</span> • <span style="color:#0077DD;">Toya</span></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#FF6699;">waratte hashitteiku hi mo</span><br />
+<span style="color:#FFCC11;">nakinagara kaeru hi mo</span><br />
+<span style="color:#00BBDD;">kono machi to tomo ni ikiteru</span><br />
+<br />
+<span style="color:#FF7722;">garagara no densha ni noru tabi<br />
+omoidasu koto ga atta</span><br />
+<span style="color:#0077DD;">mado no soto kara mieteru no wa<br />
+sorezore no monogatari</span><br />
+<br />
+<span style="color:#FF6699;">nakama no yobu koe ga suru</span><br />
+<span style="color:#00BBDD;">awasatte hajimete ugokidasu</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">waratte hashitteiku hi mo</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">nakinagara kaeru hi mo</span><br />
+<span style="color:#FFCC11;">kono machi wa itsumo koko ni</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">kizamikondeiku</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">dareka ga</span> <span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">waratta you na ki ga shita</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">naita you na ki ga shita</span><br />
+<span style="color:#FF6699;">haruka mukashi no kioku ni</span> <span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">hari ga ochiteiku</span><br />
+<span style="color:#00BBDD;">machi to tomo ni</span><br />
+<br />
+<span style="color:#FF7722;">karakara ni kawaku nodo no oku<br />
+tsuyogari wo kainarashita</span><br />
+<span style="color:#0077DD;">tsunagu te ga fueru sono tabi ni<br />
+tsuyoku nareru ki ga shita nda</span><br />
+<br />
+<span style="color:#00BBDD;">bokura wo yobu koe ga suru</span><br />
+<span style="color:#FFCC11;">tsuranatte saki e tsunagu kizuna</span><br />
+<br />
+<span style="color:#FF7722;">kizutsukete shimau hi mo</span><br />
+<span style="color:#FF6699;">kanashisa komiageru hi mo</span><br />
+<span style="color:#0077DD;">kotoba to oto ni kaeteku</span><br />
+<span style="color:#00BBDD;">wasurenai you ni</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">waratte hashitteiku hi mo</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">nakinagara kaeru hi mo</span><br />
+<span style="color:#00BBDD;">kono machi wa itsumo koko ni</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">kizamikondeiku</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">dareka ga</span> <span style="display: inline; background: linear-gradient(to bottom, #FF6699,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">waratta you na ki ga shita</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#00BBDD,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">naita you na ki ga shita</span><br />
+<span style="color:#FFCC11;">haruka mukashi no kioku ni hari ga ochiteiku</span><br />
+<span style="color:#00BBDD;">machi to tomo ni</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <div id="japanese" class="tab-panel">
+    <div class="poem">
+<p><b><span style="color:#FFCC11;">リン</span> • <span style="color:#FF6699;">こはね</span> • <span style="color:#00BBDD;">杏</span> • <span style="color:#FF7722;">彰人</span> • <span style="color:#0077DD;">冬弥</span></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#FF6699;">笑って走っていく日も</span><br />
+<span style="color:#FFCC11;">泣きながら帰る日も</span><br />
+<span style="color:#00BBDD;">この街と共に生きてる</span><br />
+<br />
+<span style="color:#FF7722;">ガラガラの電車に乗る度<br />
+思い出すことがあった</span><br />
+<span style="color:#0077DD;">窓の外から見えてるのは<br />
+それぞれの物語</span><br />
+<br />
+<span style="color:#FF6699;">仲間の呼ぶ声がする</span><br />
+<span style="color:#00BBDD;">合わさって初めて動き出す</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">笑って走っていく日も</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">泣きながら帰る日も</span><br />
+<span style="color:#FFCC11;">この街はいつもここに</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">刻み込んでいく</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">誰かが</span><span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">笑ったような気がした</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">泣いたような気がした</span><br />
+<span style="color:#FF6699;">遥か昔の記憶に</span><span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">針が落ちていく</span><br />
+<span style="color:#00BBDD;">街と共に</span><br />
+<br />
+<span style="color:#FF7722;">カラカラに渇く喉の奥<br />
+強がりを飼い慣らした</span><br />
+<span style="color:#0077DD;">繋ぐ手が増えるその度に<br />
+強くなれる気がしたんだ</span><br />
+<br />
+<span style="color:#00BBDD;">僕らを呼ぶ声がする</span><br />
+<span style="color:#FFCC11;">連なって先へ繋ぐ絆</span><br />
+<br />
+<span style="color:#FF7722;">傷つけてしまう日も</span><br />
+<span style="color:#FF6699;">悲しさ込み上げる日も</span><br />
+<span style="color:#0077DD;">言葉と音に変えてく</span><br />
+<span style="color:#00BBDD;">忘れないように</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">笑って走っていく日も</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">泣きながら帰る日も</span><br />
+<span style="color:#00BBDD;">この街はいつもここに</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">刻み込んでいく</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">誰かが</span><span style="display: inline; background: linear-gradient(to bottom, #FF6699,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">笑ったような気がした</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#00BBDD,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">泣いたような気がした</span><br />
+<span style="color:#FFCC11;">遥か昔の記憶に針が落ちていく</span><br />
+<span style="color:#00BBDD;">街と共に</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <div id="english" class="tab-panel">
+    <div class="poem">
+<p><b><span style="color:#FFCC11;">Rin</span> • <span style="color:#FF6699;">Kohane</span> • <span style="color:#00BBDD;">An</span> • <span style="color:#FF7722;">Akito</span> • <span style="color:#0077DD;">Toya</span></b><br />
+<b>English Translation by <a href="https://vocaloidlyrics.miraheze.org/wiki/街_(Machi)" target="_blank" rel="nofollow noreferrer noopener">Shiru</a></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#FF6699;">On days that I run, laughing</span><br />
+<span style="color:#FFCC11;">And also on days I come home with tears in my eyes</span><br />
+<span style="color:#00BBDD;">I'll live on, with this street by my side</span><br />
+<br />
+<span style="color:#FF7722;">Every time I board a rattling train, <br />
+A memory springs to mind</span><br />
+<span style="color:#0077DD;">From outside the window, <br />
+I can see the sights of our various stories</span><br />
+<br />
+<span style="color:#FF6699;">I can hear the sound of my friends calling me</span><br />
+<span style="color:#00BBDD;">And when we join together, that's when we start to move</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">On days that I run, laughing</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">And also on days I come home with tears in my eyes</span><br />
+<span style="color:#FFCC11;">This street has always been here for me</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I'll carve it into my heart</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I think that</span> <span style="display: inline; background: linear-gradient(to bottom, #FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">someone</span> <span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">laughed here</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I think that someone cried here</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">A needle falls</span> <span style="color:#FF6699;">onto my memories from long ago</span><br />
+<span style="color:#00BBDD;">As I'm together with my street</span><br />
+<br />
+<span style="color:#FF7722;">In the back of my parched-up throat,<br />
+I tamed my desire to appear strong.</span><br />
+<span style="color:#0077DD;">Every time someone new joins hands with us,<br />
+I feel like we have become stronger.</span><br />
+<br />
+<span style="color:#00BBDD;">I hear a sound calling out for us.</span><br />
+<span style="color:#FFCC11;">The bond joining us together stretches to the future.</span><br />
+<br />
+<span style="color:#FF7722;">I'll take the days where I hurt you,</span><br />
+<span style="color:#FF6699;">And the days where sorrow fills my heart,</span><br />
+<span style="color:#0077DD;">I'll turn them into lyrics and a song,</span><br />
+<span style="color:#00BBDD;">So I don't forget about them.</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">On days that I run, laughing</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#FF6699,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">And also on days I come home with tears in my eyes</span><br />
+<span style="color:#00BBDD;">This street has always been here for me</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#00BBDD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I'll carve it into my heart</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I think that</span> <span style="display: inline; background: linear-gradient(to bottom, #FF6699,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">someone</span> <span style="display: inline; background: linear-gradient(to bottom, #FF6699,#00BBDD,#FF7722); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">laughed here</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FF6699,#00BBDD,#0077DD); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I think that someone cried here</span><br />
+<span style="color:#FFCC11;">A needle falls onto my memories from long ago</span><br />
+<span style="color:#00BBDD;">As I'm together with my street</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <footer>Source: <a href="https://projectsekai.fandom.com/wiki/machi" target="_blank" rel="noopener">Project SEKAI Wiki</a></footer>
+</div>
+<script>
+  var buttons = document.querySelectorAll('.tab-btn');
+  var panels  = document.querySelectorAll('.tab-panel');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.dataset.tab;
+      buttons.forEach(function(b) { b.classList.toggle('active', b === btn); });
+      panels.forEach(function(p) { p.classList.toggle('active', p.id === target); });
+    });
+  });
+</script>
+</body>
+</html>
