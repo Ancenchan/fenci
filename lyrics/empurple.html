@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>empurple - 歌词</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 40px 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "Hiragino Sans", "Yu Gothic UI", "Microsoft YaHei", sans-serif;
+    background: #1a1a2e; color: #eee; line-height: 1.7;
+  }
+  .container { max-width: 860px; margin: 0 auto; }
+  h1 {
+    text-align: center; font-size: 28px; margin: 0 0 8px;
+    background: linear-gradient(90deg,#FF6699,#33CCBB,#FF7722,#0077DD);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .subtitle { text-align: center; color: #aaa; margin: 0 0 32px; font-size: 14px; }
+  .tabs {
+    display: flex; border-bottom: 2px solid #333; margin: 0; padding: 0; list-style: none;
+  }
+  .tab-btn {
+    flex: 1; padding: 12px 16px; background: transparent; border: none;
+    color: #bbb; cursor: pointer; font-size: 15px; font-weight: 600;
+    border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all .2s ease;
+  }
+  .tab-btn:hover { color: #fff; background: rgba(255,255,255,.04); }
+  .tab-btn.active { color: #62d8d8; border-bottom-color: #62d8d8; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .poem {
+    color: #fff; background: rgba(40,40,40,.9); text-shadow: 0 0 .5em #000;
+    padding: 28px 32px; border-radius: 0 0 12px 12px; font-size: 15px;
+    white-space: normal; word-break: break-word;
+  }
+  .poem p { margin: 0 0 12px; }
+  .poem b { font-size: 16px; }
+  ruby { display: inline-flex; flex-direction: column-reverse; align-items: center; line-height: 1; }
+  ruby > rt { font-size: .55em; color: #bbb; line-height: 1.2; margin-bottom: 2px; }
+  ruby > rp { display: none; }
+  footer { text-align: center; color: #777; font-size: 12px; margin-top: 40px; }
+  footer a { color: #62d8d8; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>empurple</h1>
+  <p class="subtitle">Project SEKAI Wiki</p>
+  <ul class="tabs" role="tablist">
+    <li><button class="tab-btn active" data-tab="romaji" role="tab">Romaji</button></li>
+    <li><button class="tab-btn" data-tab="japanese" role="tab">Japanese</button></li>
+    <li><button class="tab-btn" data-tab="english" role="tab">English</button></li>
+  </ul>
+  <div id="romaji" class="tab-panel active">
+    <div class="poem">
+<p><b><span style="color:#FFCC11;">Rin</span> • <span style="color:#BB6688;">Kanade</span> • <span style="color:#8888CC;">Mafuyu</span> • <span style="color:#CCAA88;">Ena</span> • <span style="color:#DDAACC;">Mizuki</span></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#8888CC;">Empurple</span><br />
+<br />
+<span style="color:#CCAA88;">densen ni matagatte<br />
+ashita donna jibun ka wo kangaeru</span><br />
+<span style="color:#BB6688;">unmei wo kakumatte<br />
+kuroi doresu no shoujo wa kangaeru</span><br />
+<br />
+<span style="color:#FFCC11;">kaitou ga sabitsuita</span><br />
+<span style="color:#DDAACC;">kimi wa donna kao suru kabin no rebekka</span><br />
+<span style="color:#8888CC;">hontou no watashi ga<br />
+nodo ni tsukaeteru mama Empurple</span><br />
+<br />
+<span style="color:#FFCC11;">watashi no hidari te wo akete mite?</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">mada aoi hitomi no</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">watashi ga mitara akireru kashira</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">sunao na kimochi dake de ikitemitai</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">te wo tsunaidara wakaru to ii ne</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple"</span><br />
+<br />
+<span style="color:#8888CC;">mada mannaka no watashi Empurple</span><br />
+<br />
+<span style="color:#FFCC11;">densen wo kirisaite</span><br />
+<span style="color:#CCAA88;">kogane no hime wo koroshita hebi wo tsukanda</span><br />
+<span style="color:#FFCC11;">shingou de machibouke</span><br />
+<span style="color:#CCAA88;">kawarugawaru yuku hito no senaka wo mite</span><br />
+<br />
+<span style="color:#BB6688;">shoujo no hitomi wa kumotta<br />
+betsu no arisu wa sude ni watatteta</span><br />
+<span style="color:#DDAACC;">gozouroppu ni karamu densen de<br />
+atama terashite ageyou ka</span><br />
+<br />
+<span style="color:#8888CC;">watashi no migi te wo akete mite?<br />
+akane iro no sora</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #CCAA88,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">anata ga mitara odoroku kashira</span><br />
+<span style="color:#FFCC11;">konna ni kirei datte shiranakute</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">te wo tsunaidara atatakai kara</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple"</span><br />
+<br />
+<span style="color:#8888CC;">mada mannaka no watashi Empurple</span><br />
+<br />
+<span style="color:#BB6688;">mada aoi kono hitomi ga</span><br />
+<span style="color:#CCAA88;">shirarezaru iro da to shite</span><br />
+<span style="color:#DDAACC;">hita kakusu akane sora wo</span><br />
+<span style="color:#8888CC;">anata nara oboeteru to shite</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">daiji na mono wa hanasanai kara<br />
+karada no naka de mada kowareteiru</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">te wo tsunaidara naoshite agete</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple"</span><br />
+<br />
+<span style="color:#8888CC;">mada mannaka no watashi Empurple</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <div id="japanese" class="tab-panel">
+    <div class="poem">
+<p><b><span style="color:#FFCC11;">リン</span> • <span style="color:#BB6688;">奏</span> • <span style="color:#8888CC;">まふゆ</span> • <span style="color:#CCAA88;">絵名</span> • <span style="color:#DDAACC;">瑞希</span></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#8888CC;">Empurple</span><br />
+<br />
+<span style="color:#CCAA88;">電線に跨って<br />
+明日どんな自分かを考える</span><br />
+<span style="color:#BB6688;">運命を匿って<br />
+黒いドレスの少女は考える</span><br />
+<br />
+<span style="color:#FFCC11;">解答が錆びついた</span><br />
+<span style="color:#DDAACC;">君はどんな顔する花瓶のレベッカ?</span><br />
+<span style="color:#8888CC;">本当の私が<br />
+喉につかえてるまま Empurple</span><br />
+<br />
+<span style="color:#FFCC11;">私の左手を開けてみて?</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">まだ青い瞳の</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">私が見たら呆れるかしら</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">素直な気持ちだけで生きてみたい</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">手を繋いだらわかると良いね</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple"</span><br />
+<br />
+<span style="color:#8888CC;">まだ真ん中の私 Empurple</span><br />
+<br />
+<span style="color:#FFCC11;">電線を切り裂いて</span><br />
+<span style="color:#CCAA88;">黄金の姫を殺した蛇を掴んだ</span><br />
+<span style="color:#FFCC11;">信号で待ちぼうけで</span><br />
+<span style="color:#CCAA88;">代わる代わる征く人の背中を見て</span><br />
+<br />
+<span style="color:#BB6688;">少女の瞳は曇った<br />
+別のアリスは既に渡ってた</span><br />
+<span style="color:#DDAACC;">五臓六腑に絡む電線で<br />
+あたま照らしてあげようか</span><br />
+<br />
+<span style="color:#8888CC;">私の右手を開けてみて？<br />
+茜色の空</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #CCAA88,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">あなたが見たら驚くかしら</span><br />
+<span style="color:#FFCC11;">こんなに綺麗だって知らなくて</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">手を繋いだら温かいから</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple"</span><br />
+<br />
+<span style="color:#8888CC;">まだ真ん中の私Empurple</span><br />
+<br />
+<span style="color:#BB6688;">まだ青いこの瞳が</span><br />
+<span style="color:#CCAA88;">知られざる色だとして</span><br />
+<span style="color:#DDAACC;">ひた隠す茜空を</span><br />
+<span style="color:#8888CC;">あなたなら覚えてるとして</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">大事なものは離さないから<br />
+身体の中でまだ壊れている</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">手を繋いだら直してあげて</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple"</span><br />
+<br />
+<span style="color:#8888CC;">まだ真ん中の私 Empurple</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <div id="english" class="tab-panel">
+    <div class="poem">
+<p><b><span style="color:#FFCC11;">Rin</span> • <span style="color:#BB6688;">Kanade</span> • <span style="color:#8888CC;">Mafuyu</span> • <span style="color:#CCAA88;">Ena</span> • <span style="color:#DDAACC;">Mizuki</span></b><br />
+<b>Official <a href="https://youtu.be/InZ7GOU-CQ8" target="_blank" rel="nofollow noreferrer noopener">English Translation</a></b><br />
+<span style="float: right; cursor: pointer; color: #000; border-color: #62d8d8; background-color: #62d8d8; margin-bottom: -45px">Copy lyrics</span>
+</p>
+
+<p><br />
+<span style="color:#8888CC;">Empurple</span><br />
+<br />
+<span style="color:#CCAA88;">Riding on the power lines,<br />
+Wondering what kind of person she'll become tomorrow</span><br />
+<span style="color:#BB6688;">Hiding her fate,<br />
+the girl in black is thinking</span><br />
+<br />
+<span style="color:#FFCC11;">The answer has rusted</span><br />
+<span style="color:#DDAACC;">What will you be like, the Rebecca in the vase?</span><br />
+<span style="color:#8888CC;">The real me, feeling stuck in throat<br />
+Empurpling</span><br />
+<br />
+<span style="color:#FFCC11;">Try to open my left hand and have a look?</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">It's still embedded with blue eyes</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If I saw that, would I be surprised?</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">I just want to live once with genuine feelings only</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If we hold hands, it would be great if you could understand</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple",</span><br />
+<br />
+<span style="color:#8888CC;">The wavering me dyed purple</span><br />
+<br />
+<span style="color:#FFCC11;">Cut open the power lines,</span><br />
+<span style="color:#CCAA88;">Caught the snake that killed the golden princess</span><br />
+<span style="color:#FFCC11;">Waiting in vain at the traffic light,</span><br />
+<span style="color:#CCAA88;">Watching groups of people pass by,</span><br />
+<br />
+<span style="color:#BB6688;">The girl's eyes fogged up<br />
+Another Alice has already walked by</span><br />
+<span style="color:#DDAACC;">Let me use the wires entwining her organs<br />
+To lighten up your thoughts?</span><br />
+<br />
+<span style="color:#8888CC;">Try to open my right hand and have a look?<br />
+You'll find a crimson sky</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #CCAA88,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If you see it, will you be shocked?</span><br />
+<span style="color:#FFCC11;">The crimson sky is so beautiful, yet you never know</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If we hold hands, it would be so warm...</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple",</span><br />
+<br />
+<span style="color:#8888CC;">The wavering me dyed purple</span><br />
+<br />
+<span style="color:#BB6688;">Still tinged with blue, these eyes,</span><br />
+<span style="color:#CCAA88;">As being an unknown shade of color</span><br />
+<span style="color:#DDAACC;">Hiding away that piece of crimson sky,</span><br />
+<span style="color:#8888CC;">If it were you, you’d remember it</span><br />
+<br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC,#DDAACC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">The important things, I'll keep them with me<br />
+Inside my body, something is still broken</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #BB6688,#8888CC,#CCAA88); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">If we hold hands, please fix me</span><br />
+<span style="display: inline; background: linear-gradient(to bottom, #FFCC11,#8888CC); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Please, Forgive me and "Purple",</span><br />
+<br />
+<span style="color:#8888CC;">The wavering me dyed purple</span><br />
+</p>
+</div>
+    </div>
+  </div>
+  <footer>Source: <a href="https://projectsekai.fandom.com/wiki/empurple" target="_blank" rel="noopener">Project SEKAI Wiki</a></footer>
+</div>
+<script>
+  var buttons = document.querySelectorAll('.tab-btn');
+  var panels  = document.querySelectorAll('.tab-panel');
+  buttons.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.dataset.tab;
+      buttons.forEach(function(b) { b.classList.toggle('active', b === btn); });
+      panels.forEach(function(p) { p.classList.toggle('active', p.id === target); });
+    });
+  });
+</script>
+</body>
+</html>
